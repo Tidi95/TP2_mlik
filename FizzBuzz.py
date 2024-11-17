@@ -1,5 +1,5 @@
-def affiche(n):
-    for i in range(1, n+1):
+def affiche(n1, n2):
+    for i in range(n1, n2+1):
         if i % 3 == 0 and i % 5 == 0:
             print("Frisbee", end="")
         elif i % 3 == 0:
@@ -8,5 +8,7 @@ def affiche(n):
             print("Buzz", end="")
         else:
             print(i, end="")
-affiche(100)
+affiche(5, 10)
+#affiche(10, 16)
+
 
