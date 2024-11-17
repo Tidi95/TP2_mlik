@@ -1,22 +1,17 @@
 import string
 
-def crypt(message, pas):
+def decrypt(message):
 
-    if not 1 <= pas <= 9:
-        raise ValueError("Le pas doit être compris entre 1 et 9")
-
+    pas = int(message[-1])  # Récupérer le pas à partir du dernier caractère
+    message = message[:-1]  # Supprimer le pas du message
     caracteres = string.ascii_letters + string.digits + " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
     resultat = ""
     for caractere in message:
         indice = caracteres.find(caractere)
         if indice != -1:
-            indice = (indice + pas) % len(caracteres)
+            indice = (indice - pas) % len(caracteres)  # Décalage négatif pour décrypter
             resultat += caracteres[indice]
         else:
             resultat += caractere
-    return resultat + str(pas)
+    return resultatimport string
 
-# Exemple d'utilisation :
-message = "Hello, world!"
-message_crypte = crypt(message, 3)
-print(message_crypte)
