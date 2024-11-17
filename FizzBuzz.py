@@ -8,7 +8,7 @@ def affiche(n1, n2):
             print("Buzz", end="")
         else:
             print(i, end="")
-affiche(5, 10)
-#affiche(10, 16)
+#affiche(5, 10)
+affiche(10, 16)
 
 
