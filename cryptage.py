@@ -1,16 +1,22 @@
 import string
 
-def crypt(message):
-    caracteres = string.ascii_letters + string.digits + " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~" + " "
+def crypt(message, pas):
+
+    if not 1 <= pas <= 9:
+        raise ValueError("Le pas doit être compris entre 1 et 9")
+
+    caracteres = string.ascii_letters + string.digits + " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
     resultat = ""
     for caractere in message:
         indice = caracteres.find(caractere)
-        # On gère le cas où le caractère n'est pas dans notre liste
         if indice != -1:
-            indice = (indice + 1) % len(caracteres)
+            indice = (indice + pas) % len(caracteres)
             resultat += caracteres[indice]
         else:
             resultat += caractere
-    return resultat
+    return resultat + str(pas)
 
-print(crypt("Hello, world!"))
+# Exemple d'utilisation :
+message = "Hello, world!"
+message_crypte = crypt(message, 3)
+print(message_crypte)
